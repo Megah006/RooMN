@@ -1,4 +1,4 @@
-// pages/index.tsx
+
 import React, { useMemo, useState } from "react";
 import { Button } from "../components/ui/button";
 import { motion } from "framer-motion";
@@ -7,14 +7,14 @@ import { HomeIcon, Search, PlusCircle, Heart, Users } from "lucide-react";
 import type { Listing } from "../types/Listing";
 import { DEMO_LISTINGS, EMPTY_FORM } from "../data/demo";
 
-// these are in components root (not subfolders)
-import ListingFilters from "../components/listings/ListingFilters"; // file we add below
-import ListingsGrid from "../components/listings/ListingsGrid";       // file we add below
+
+import ListingFilters from "../components/listings/ListingFilters"; 
+import ListingsGrid from "../components/listings/ListingsGrid";    
 import PostListingForm from "../components/PostForm";
-import SavedListings from "../components/SavedListings";      // file we add below (or rename your SavedListing.tsx)
+import SavedListings from "../components/SavedListings";    
 import ProfileForm from "../components/ProfileForm";
 import ShieldIcon from "../components/common/ShieldIcon";    
-            // your ShieldIcon lives in components/common.tsx (default export)
+
 console.log({
   ListingFilters,
   ListingsGrid,
