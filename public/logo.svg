@@ -1,0 +1,19 @@
+<svg 
+  id="roomn-logo" 
+  width="200" 
+  height="60" 
+  viewBox="0 0 180 50" 
+  xmlns="http://www.w3.org/2000/svg" 
+  class="block"
+>
+  <text 
+    x="0" 
+    y="45" 
+    font-family="system-ui, -apple-system, sans-serif" 
+    font-size="48" 
+    font-weight="700" 
+    text-anchor="start"
+  >
+    <tspan fill="#DAA520">Roo</tspan><tspan fill="#800000">MN</tspan>
+  </text>
+</svg>

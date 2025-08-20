@@ -2,8 +2,9 @@
 import React, { useMemo, useState } from "react";
 import { Button } from "../components/ui/button";
 import { motion } from "framer-motion";
-import { HomeIcon, Search, PlusCircle, Heart, Users } from "lucide-react";
-
+import { Search, PlusCircle, Heart, Users } from "lucide-react"; 
+import Link from "next/link";
+import Image from "next/image";
 import type { Listing } from "../types/Listing";
 import { DEMO_LISTINGS, EMPTY_FORM } from "../data/demo";
 
@@ -35,14 +36,13 @@ export default function IndexPage() {
   const [listings, setListings] = useState<Listing[]>(DEMO_LISTINGS);
   const [successMsg, setSuccessMsg] = useState<string>("");
 
-  // Toggle save/unsave listing by id
+
   function toggleSave(id: string) {
     setSaved((prev) =>
       prev.includes(id) ? prev.filter((sid) => sid !== id) : [...prev, id]
     );
   }
 
-  // keep this near the top of IndexPage
 
 const filtered = useMemo(() => {
   const src = listings ?? [];
@@ -75,36 +75,51 @@ const filtered = useMemo(() => {
     setForm(EMPTY_FORM);
   }
 
-  return (
-    <div className="min-h-screen bg-white p-4 md:p-8">
-      {/* Header */}
-      <motion.header
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="max-w-6xl mx-auto flex items-center justify-between gap-3"
-      >
-        <div className="flex items-center gap-3">
-          <HomeIcon className="w-7 h-7" />
-          <h1 className="text-2xl md:text-3xl font-bold">RooMN</h1>
-          <span className="text-sm text-gray-500 hidden md:inline">
-            Roommates & Subleases for your campus
-          </span>
-        </div>
-        <div className="flex items-center gap-2">
-          <Button variant={tab === "listings" ? "default" : "secondary"} onClick={() => setTab("listings")}>
-            <Search className="w-4 h-4 mr-2" /> Browse
-          </Button>
-          <Button variant={tab === "post" ? "default" : "secondary"} onClick={() => setTab("post")}>
-            <PlusCircle className="w-4 h-4 mr-2" /> Post a listing
-          </Button>
-          <Button variant={tab === "saved" ? "default" : "secondary"} onClick={() => setTab("saved")}>
-            <Heart className="w-4 h-4 mr-2" /> Saved
-          </Button>
-          <Button variant={tab === "profile" ? "default" : "secondary"} onClick={() => setTab("profile")}>
-            <Users className="w-4 h-4 mr-2" /> Profile
-          </Button>
-        </div>
-      </motion.header>
+return (
+  <div className="min-h-screen bg-background p-4 md:p-8">
+    <motion.header
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="max-w-6xl mx-auto flex items-center justify-between gap-3"
+    >
+      <div className="flex items-center gap-3">
+        <button
+          onClick={() => setTab("listings")}
+          aria-label="RooMN home"
+          className="group inline-flex items-center gap-2 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          <Image
+            src="/logo.svg"
+            alt="RooMN"
+            width={400}
+            height={200}
+            priority
+            className="h-12 w-auto md:h-14 transition-transform duration-200 ease-out
+                       group-hover:scale-105 group-active:scale-95"
+          />
+          <span className="sr-only">Home</span>
+        </button>
+
+        <span className="hidden md:inline text-base md:text-lg font-medium text-muted-foreground relative top-1.5">
+          Roommates &amp; Subleases for your campus
+        </span>
+      </div>
+
+      <div className="flex items-center gap-2">
+        <Button variant={tab === "listings" ? "default" : "secondary"} onClick={() => setTab("listings")}>
+          <Search className="w-4 h-4 mr-2" /> Browse
+        </Button>
+        <Button variant={tab === "post" ? "default" : "secondary"} onClick={() => setTab("post")}>
+          <PlusCircle className="w-4 h-4 mr-2" /> Post a listing
+        </Button>
+        <Button variant={tab === "saved" ? "default" : "secondary"} onClick={() => setTab("saved")}>
+          <Heart className="w-4 h-4 mr-2" /> Saved
+        </Button>
+        <Button variant={tab === "profile" ? "default" : "secondary"} onClick={() => setTab("profile")}>
+          <Users className="w-4 h-4 mr-2" /> Profile
+        </Button>
+      </div>
+    </motion.header>
 
       {/* Content */}
       <main className="max-w-6xl mx-auto mt-6">
