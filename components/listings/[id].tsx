@@ -4,8 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import { DEMO_LISTINGS } from "../../data/demo";
 import type { Listing } from "../../types/Listing";
 import { CalendarDays, MapPin, BedDouble } from "lucide-react";
-import LabelRow from "../../components/common/LabelRow";
-import Pill from "../../components/common/Pill";
+import LabelRow from "../common/LabelRow";
+import Pill from "../common/Pill";
 
 export default function ListingDetail() {
   const { query } = useRouter();
