@@ -13,7 +13,7 @@ Finding roommates and short-term housing is often fragmented across group chats 
 - Post new listings through a structured form
 - Profile and saved listings views
 - Responsive, mobile-friendly UI
-    **Note:** The current deployment is a static frontend preview. Backend and authentication features are planned.
+- **Note:** The current deployment is a static frontend preview. Backend and authentication features are planned.
     
 ## Tech Stack
 - Frontend: Next.js (React, TypeScript)
@@ -29,11 +29,12 @@ RooMN is currently in an active development/preview state.
 - persistent data storage
 - Listing moderation and validation
 - Expanded filtering and search capabilities
+- 
 ## Authors
-Omar Megahed
-  - Computer Engineering - University of Minnesota
+- **Omar Megahed**
+  - Computer Engineering — University of Minnesota
   - GitHub: https://github.com/Megah006
-Ahmed Khalil
-  - Computer Science - University of Minnesota
+
+- **Ahmed Khalil**
+  - Computer Science — University of Minnesota
   - GitHub: https://github.com/hamoudy0922
-  
