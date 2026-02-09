@@ -1,30 +1,10 @@
-import { useRouter } from "next/router";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
-import { DEMO_LISTINGS } from "../../data/demo";
-import type { Listing } from "../../types/Listing";
 import { CalendarDays, MapPin, BedDouble } from "lucide-react";
 import LabelRow from "../common/LabelRow";
 import Pill from "../common/Pill";
 
-export default function ListingDetail() {
-  const { query } = useRouter();
-  const id = typeof query.id === "string" ? query.id : "";
-
-  const [store, setStore] = useState<Listing[] | null>(null);
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem("roomn:listings");
-      setStore(raw ? JSON.parse(raw) : null);
-    } catch {}
-  }, []);
-
-  const listing = useMemo(() => {
-    const all = [...DEMO_LISTINGS, ...(store ?? [])];
-    return all.find((l) => l.id === id);
-  }, [id, store]);
-
-  if (!id || !listing) {
+export default function ListingDetail({ listing }: { listing?: any }) {
+  if (!listing) {
     return (
       <div className="min-h-screen bg-background p-4 md:p-8">
         <div className="max-w-3xl mx-auto">
@@ -34,6 +14,19 @@ export default function ListingDetail() {
       </div>
     );
   }
+
+  const postedAt = listing.posted_at ?? listing.created_at ?? Date.now();
+  const campus = listing.campus ?? "Unknown campus";
+  const startDate = listing.start_date;
+  const endDate = listing.end_date;
+  const roomType = listing.room_type ?? "Room";
+  const rent = listing.rent ?? 0;
+  const images = Array.isArray(listing.images) ? listing.images : [];
+  const utilitiesIncluded = !!listing.utilities_included;
+  const furnished = !!listing.furnished;
+  const pets = !!listing.pets;
+  const contact = listing.contact ?? "N/A";
+
 
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
